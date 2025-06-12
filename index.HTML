@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mueblería Los Lagos</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f1f4f9;
+    }
+
+    header {
+      background: linear-gradient(45deg, #2980b9, #6dd5fa);
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffeaa7;
+    }
+
+    .registro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    }
+
+    .registro form {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .registro h2 {
+      margin-bottom: 1rem;
+      color: #2980b9;
+    }
+
+    .registro input, .registro button {
+      width: 100%;
+      padding: 0.7rem;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .registro button {
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .registro button:hover {
+      background-color: #1c5980;
+    }
+
+    .categoria {
+      padding: 2rem;
+    }
+
+    .categoria h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem 2rem;
+    }
+
+    .producto {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .producto:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .producto img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .producto h4 {
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    #cerrarSesion {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: crimson;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.95);}
+      to {opacity: 1; transform: scale(1);}
+    }
+  </style>
+</head>
+<body onload="mostrarRegistro()">
+
+  <!-- Registro -->
+  <section id="registro" class="registro">
+    <form onsubmit="registrarUsuario(event)">
+      <h2>Bienvenido a Mueblería Los Lagos</h2>
+      <input type="text" id="nombre" placeholder="Nombre completo" required />
+      <input type="email" id="correo" placeholder="Correo electrónico" required />
+      <input type="password" id="clave" placeholder="Contraseña" required />
+      <button type="submit">Registrarse</button>
+    </form>
+  </section>
+
+  <!-- Contenido -->
+  <div id="contenido" style="display: none;">
+    <button id="cerrarSesion" onclick="cerrarSesion()">Cerrar sesión</button>
+
+    <header>
+      <h1>Mueblería Los Lagos</h1>
+      <nav>
+        <a href="#salas">Salas</a>
+        <a href="#camas">Camas</a>
+        <a href="#comedores">Comedores</a>
+      </nav>
+    </header>
+
+    <!-- Categoría: Salas -->
+    <section id="salas" class="categoria">
+      <h2>Salas</h2>
+      <div class="productos">
+        <!-- 7 productos -->
+        <div class="producto"><img src="UNO.JPG"><h4>Sala Esquinera</h4><p>$10,000</p></div>
+        <div class="producto"><img src="DOS.JPG"><h4>Sala Moderna</h4><p>$12,500</p></div>
+        <div class="producto"><img src="TRES.JPG"><h4>Sala Vintage</h4><p>$9,800</p></div>
+        <div class="producto"><img src="CUATRO.JPG"><h4>Sala Minimalista</h4><p>$11,200</p></div>
+        <div class="producto"><img src="CINCO.JPG"><h4>Sala Clásica</h4><p>$13,000</p></div>
+        <div class="producto"><img src="SEIS.JPG"><h4>Sala Lujosa</h4><p>$18,500</p></div>
+        <div class="producto"><img src="SIETE.JPG"><h4>Sala Rústica</h4><p>$8,900</p></div>
+      </div>
+    </section>
+
+    <!-- Categoría: Camas -->
+    <section id="camas" class="categoria">
+      <h2>Camas</h2>
+      <div class="productos">
+        <div class="producto"><img src="OCHO.JPG"><h4>Cama Queen</h4><p>$6,500</p></div>
+        <div class="producto"><img src="NUEVE.JPG"><h4>Cama King</h4><p>$7,800</p></div>
+        <div class="producto"><img src="DIEZ.JPG"><h4>Cama Individual</h4><p>$4,200</p></div>
+        <div class="producto"><img src="ONCE.JPG"><h4>Cama Matrimonial</h4><p>$5,600</p></div>
+        <div class="producto"><img src="DOCE.JPG"><h4>Cama de Lujo</h4><p>$10,000</p></div>
+        <div class="producto"><img src="TRECE.JPG"><h4>Cama Infantil</h4><p>$3,800</p></div>
+        <div class="producto"><img src="CATORCE.JPG"><h4>Cama Rústica</h4><p>$6,200</p></div>
+      </div>
+    </section>
+
+    <!-- Categoría: Comedores -->
+    <section id="comedores" class="categoria">
+      <h2>Comedores</h2>
+      <div class="productos">
+        <div class="producto"><img src="D:\muebleria\Comedor.jpg"><h4>Comedor 4 sillas</h4><p>$6,000</p></div>
+        <div class="producto"><img src="https://via.placeholder.com/200x150?text=Comedor+2"><h4>Comedor 6 sillas</h4><p>$8,000</p></div>
+        <div class="producto"><img src="https://via.placeholder.com/200x150?text=Comedor+3"><h4>Comedor Moderno</h4><p>$9,200</p></div>
+        <div class="producto"><img src="https://via.placeholder.com/200x150?text=Comedor+4"><h4>Comedor Clásico</h4><p>$7,500</p></div>
+        <div class="producto"><img src="https://via.placeholder.com/200x150?text=Comedor+5"><h4>Comedor Redondo</h4><p>$8,800</p></div>
+        <div class="producto"><img src="https://via.placeholder.com/200x150?text=Comedor+6"><h4>Comedor Elegante</h4><p>$11,000</p></div>
+        <div class="producto"><img src="https://via.placeholder.com/200x150?text=Comedor+7"><h4>Comedor Rústico</h4><p>$9,900</p></div>
+      </div>
+    </section>
+
+    <footer>
+      <p>📍 Dirección: Santiago Tuxtla Ver. Col. El Amate</p>
+      <p>📞 Tel: 294-101-2970 |
+    </footer>
+  </div>
+
+  <script>
+    function mostrarRegistro() {
+      sessionStorage.removeItem("usuario");
+      document.getElementById("registro").style.display = "flex";
+      document.getElementById("contenido").style.display = "none";
+    }
+
+    function registrarUsuario(e) {
+      e.preventDefault();
+      const nombre = document.getElementById("nombre").value;
+      sessionStorage.setItem("usuario", nombre);
+      document.getElementById("registro").style.display = "none";
+      document.getElementById("contenido").style.display = "block";
+    }
+
+    function cerrarSesion() {
+      sessionStorage.removeItem("usuario");
+      location.reload();
+    }
+  </script>
+</body>
+</html>
